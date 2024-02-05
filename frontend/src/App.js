@@ -12,7 +12,6 @@ function App() {
         <Route path='/community' element = {<community/>}/>
         <Route path='/profile' element = {<profile/>}/>
         <Route path='/chat' element = {<chat/>}/>
-        <Route path='/login' element = {<loginsignup/>}/>
       </Routes>
       </BrowserRouter>
     </div>

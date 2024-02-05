@@ -9,7 +9,7 @@ export const Navbar = () => {
     <div className = 'navbar'>
         <div className = 'navbar-logo'>
             <img src = {logo} alt = "" />
-            <p>MoodLog</p>
+            <p>Ahnaf</p>
         </div>
         <ul className = "nav-menu">
             <li onClick={()=>{setMenu("Home")}}><Link style={{color: '#000', textDecoration: 'none'} } to='/'>Home</Link>{menu == "Home"? <hr/>:<></>}</li>
@@ -17,11 +17,10 @@ export const Navbar = () => {
             <li onClick={()=>{setMenu("Community")}}><Link style={{color: '#000', textDecoration: 'none'} } to='/community'>Community</Link>{menu == "Community"? <hr/>:<></>}</li>
             <li onClick={()=>{setMenu("Profile")}}><Link style={{color: '#000', textDecoration: 'none'} } to='/profile'>Profile</Link>{menu == "Profile"? <hr/>:<></>}</li>
         </ul>
-        <div className='nav-login-cart'>
-            <Link to='/login'><button>Login</button></Link>
+        <div className='nav-chat'>
             <Link to='/chat'><img src={chat} alt="" /></Link>
-            <div className='nav-cart-count'> {/* this class is used to add counter to the cart icon*/}
-              0
+            <div className='nav-chat-count'> {/* this class is used to add counter to the cart icon*/}
+              10
             </div>
         </div>
     </div>

@@ -5,6 +5,9 @@ Environtment setup:
 - install node.js
 - download github desktop so you can easily upload in the repository
 
+To start the program after each clone
+open terminal in vscode from front end folder and type 'npm init -y' then 'npm install' then 'npm start'
+
 To do
 - Learn MERN stack for till 15th Feb, we starting coding after 15th feb
 - Please share any idea or features you would like to add with the existing features using the doc file
