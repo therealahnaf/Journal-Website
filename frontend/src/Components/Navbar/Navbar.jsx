@@ -9,7 +9,7 @@ export const Navbar = () => {
     <div className = 'navbar'>
         <div className = 'navbar-logo'>
             <img src = {logo} alt = "" />
-            <p>Ahnaf</p>
+            <p>MoodLog</p>
         </div>
         <ul className = "nav-menu">
             <li onClick={()=>{setMenu("Home")}}><Link style={{color: '#000', textDecoration: 'none'} } to='/'>Home</Link>{menu == "Home"? <hr/>:<></>}</li>
