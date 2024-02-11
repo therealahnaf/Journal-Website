@@ -1,8 +1,8 @@
 import React from 'react'
 
-export const journal = () => {
+export const Journal = () => {
   return (
     <div>journal</div>
   )
 }
-export default journal;
+export default Journal;
