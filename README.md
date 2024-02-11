@@ -16,4 +16,6 @@ To do
 - Please share any idea or features you would like to add with the existing features using the doc file
 - class diagram for sprint - 2
 
--Mubtasim Fuad Mahde - i am currently working on the Navigation bar 'Navbar' of the website. it will be available for all page except the login page.
+Credits
+Mubtasim Fuad Mahde - Navbar FrontEnd
+Afra Anani - Login FrontEnd
