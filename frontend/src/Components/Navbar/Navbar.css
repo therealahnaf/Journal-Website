@@ -7,19 +7,19 @@
 .navbar-logo{
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 0px;
 }
 .navbar-logo p{
     color: #171717;
-    font-size: 38px;
+    font-size: 28px;
     font-weight: 600;
 }
 .nav-menu{
     display: flex;
     align-items: center;
     list-style: none;
-    gap: 50px;
-    color: 626262;
+    gap: 30px;
+    color: #626262;
     font-size: 20px;
     font-weight: 500;
 }

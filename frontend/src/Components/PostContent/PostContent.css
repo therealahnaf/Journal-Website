@@ -1,0 +1,35 @@
+.PostContent{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+.PostContent button {
+    transition-duration: 0.4s;
+    width: 150px;
+    height: 30px;
+    margin: auto;
+    background: rgb(1, 247, 255);
+    border-radius: 15px;
+}
+  
+.PostContent button:hover {
+    background-color: rgb(0, 183, 255); /* Green */
+    color: black;
+}
+.PostContent .input-text{
+    border-radius: 15px;
+    height: 50px;
+    width: 400px;
+    margin: auto;
+    background: rgb(255, 255, 255);
+}
+.PostContent .input-file{
+    border-radius: 15px;
+    margin: auto;
+    width: 200px;
+    background: rgb(255, 255, 255);
+}
+.PostContent .label{
+    margin: auto;
+}

@@ -1,4 +1,4 @@
-// LoginSignup.js
+//Afra Anani
 import React, { useState } from 'react';
 import './LoginSignup.css';
 import user_icon from '../Assets/person.png';
