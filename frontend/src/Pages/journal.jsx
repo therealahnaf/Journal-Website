@@ -5,3 +5,4 @@ export const journal = () => {
     <div>journal</div>
   )
 }
+export default journal;

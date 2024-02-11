@@ -55,3 +55,6 @@
     color: white;
     z-index: 1;
 }
+.navbar-menu-logo{
+    display: flex;
+}
