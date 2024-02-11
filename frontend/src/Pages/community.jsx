@@ -5,4 +5,3 @@ export const community = () => {
     <div>community</div>
   )
 }
-/*Mubtasim*/

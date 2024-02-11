@@ -5,3 +5,4 @@ export const home = () => {
     <div>home</div>
   )
 }
+

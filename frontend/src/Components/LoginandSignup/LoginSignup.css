@@ -3,18 +3,19 @@
     display: flex;
     flex-direction: column;
     margin: auto;
-    margin-left: 850px;
-    width: 600px;
-    margin-top: 50px;
+    position: center;
+    width: 400px;
+    margin-top: 40px;
     background: #fff;
     padding-bottom: 30px;
 }
 .background {
+    height: 600px;
     display: flex;
-    flex-direction: column;
-    margin: auto;
-    background: #49d95e;
-    padding-bottom: 200px;
+    margin-bottom: 15px;
+    background: #4bfaeb;
+
+
   }
 .header{
     display: flex;
@@ -22,11 +23,11 @@
     align-items: center;
     gap: 9px;
     width: 100%;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .text{
-    color: blue;
+    color: rgb(86, 207, 255);
     font-size: 48px;
     font-weight: 700;
 }
@@ -34,7 +35,7 @@
 .underline{
     width: 61px;
     height: 6px;
-    background-color: blue;
+    background-color: rgb(86, 207, 255);
     border-radius: 9px;
 }
 
@@ -42,17 +43,17 @@
     margin-top: 55px;
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 15px;
 }
 
 .input{
     display: flex;
     align-items: center;
     margin: auto;
-    width: 480px;
-    height: 80px;
+    width: 350px;
+    height: 30px;
     background: #eaeaea;
-    border-radius: 6px;   
+    border-radius: 10px;   
 }
 
 .input img{
@@ -66,24 +67,24 @@
     border: none;
     outline: none;
     color: #797979;
-    font-size: 19px;
+    font-size: 20px;
 }
 
 .forgot-password{
-    padding-left: 62px;
+    padding-left: 50px;
     margin-top: 27px;
     color: #767676;
     font-size: 18px;
 }
 
 .forgot-password span{
-    color: #4c00b4;
+    color: #51ceff;
     cursor: pointer;
 }
 
 .submit-container{
     display: flex;
-    gap: 30px;
+    gap: 10px;
     margin: 60px auto;
 }
 
@@ -91,10 +92,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 220px;
-    height: 59px;
+    width: 160px;
+    height: 45px;
     color: #fff;
-    background: #4c00b4;
+    background: #51ceff;
     border-radius: 50px;
     font-size: 19px;
     font-weight: 700;
