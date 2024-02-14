@@ -1,4 +1,4 @@
-import './App.css';
+// import './App.css';
 import { Navbar } from './Components/Navbar/Navbar';
 import { LoginSignup } from './Components/LoginandSignup/LoginSignup';
 import {Routes,Route, useLocation } from 'react-router-dom';
