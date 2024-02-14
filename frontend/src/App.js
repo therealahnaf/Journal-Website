@@ -1,6 +1,5 @@
-// import './App.css';
 import { Navbar } from './Components/Navbar/Navbar';
-import { LoginSignup } from './Components/LoginandSignup/LoginSignup';
+import {Home} from './Components/Home/Home';
 import {Routes,Route, useLocation } from 'react-router-dom';
 import {Footer} from './Components/Footer/Footer';
 import {PostContent} from './Components/PostContent/PostContent';
@@ -12,11 +11,11 @@ function App() {
     {!isLoginOrSignup && <Navbar />}
     
     <Routes>
-      <Route exact path="/" Component={LoginSignup} />
-      <Route path="/Home" element={<div>test</div>} />
+      <Route exact path="/" element={<Home/>} />
       <Route path="/Profile" element={<div>test</div>} />
       <Route path="/Journal" element={<div>test</div>} />
-      <Route path="/Community" element={<PostContent/>} />
+      <Route path="/Community" element={<PostContent/> } />
+      <Route path="/About" element={<div>Test</div> } />
     </Routes>
     {!isLoginOrSignup && <Footer />}
     </div>
