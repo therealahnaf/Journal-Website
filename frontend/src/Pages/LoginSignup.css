@@ -1,11 +1,12 @@
 
 form.signup, form.login {
     max-width: 400px;
-    margin: 150px auto;
     padding: 20px;
     background: #fff;
     border-radius: 4px;
-    margin-left: 50px auto;
+    margin-top: 30%;
+    margin-left: 105%;
+    width: 400px;
   }
   
   label, input {
