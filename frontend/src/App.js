@@ -7,10 +7,10 @@ import {Footer} from './Components/Footer/Footer';
 import {PostContent} from './Components/PostContent/PostContent';
 function App() {
   const location = useLocation();
-  const isLoginOrSignup = location.pathname === '/';
+  const isHomeorLogin = location.pathname === '/' || location.pathname === '/Login' || location.pathname === '/Signup';
   return (
     <div>
-    {!isLoginOrSignup && <Navbar />}
+    {!isHomeorLogin && <Navbar />}
     
     <Routes>
       <Route exact path="/" element={<Home/>} />
@@ -21,7 +21,7 @@ function App() {
       <Route path="/Login" element={<Login/> } />
       <Route path="/Signup" element={<Signup/> } />
     </Routes>
-    {!isLoginOrSignup && <Footer />}
+    {!isHomeorLogin && <Footer />}
     </div>
   );
 }
