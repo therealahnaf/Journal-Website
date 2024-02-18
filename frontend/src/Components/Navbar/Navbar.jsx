@@ -28,7 +28,7 @@ export const Navbar = () => {
                 <li onClick={() => { setMenu("About") }}><Link style={{ color: '#000', textDecoration: 'none' }} to='/About'>About</Link>{menu === "About" ? <hr /> : <></>}</li>
             </ul>
             <div className='nav-chat'>
-                <Link to='/chat'><img src={chat} alt="" /></Link>
+                <img src={chat} alt="" />
                 <div className='nav-chat-count'> {/* this class is used to add counter to the cart icon*/}
                     10
                 </div>
