@@ -4,9 +4,7 @@ form.signup, form.login {
     padding: 20px;
     background: #fff;
     border-radius: 4px;
-    margin-top: 30%;
-    margin-left: 105%;
-    width: 400px;
+    background-color: aqua;
   }
   
   label, input {
