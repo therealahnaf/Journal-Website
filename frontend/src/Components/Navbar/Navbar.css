@@ -4,6 +4,7 @@
     justify-content: space-around;
     box-shadow:  0 1px 3px -2px black; /* to put shadow under the box with color*/
     padding: 0px;
+    background-image: url('../Assets/homecontent.jpg');
 }
 .navbar-logo{
     display: flex;

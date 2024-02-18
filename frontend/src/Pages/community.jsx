@@ -5,3 +5,11 @@ export const community = () => {
     <div>community</div>
   )
 }
+
+
+export const Community = () => {
+  return (
+    <div>Community</div>
+  )
+}
+export default Community

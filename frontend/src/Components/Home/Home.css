@@ -4,16 +4,15 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    width: 80%; /* Set fixed width */
-    max-width: 1200px;
+    max-width: 800px;
     background-color: #fff;
-    border: 2px solid cyan;
+    border: 2px solid aqua;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background-image: url('../Assets/homecontent.jpg');
     background-size: cover;
-    margin-top: 25%;
-    margin-left: 40%;
+    margin: auto;
+    margin-top: 15%;
   }
   
   .left-content {
