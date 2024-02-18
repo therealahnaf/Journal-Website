@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 
 form.signup, form.login {
     max-width: 400px;
@@ -35,4 +33,4 @@ form.signup, form.login {
   input.error {
     border: 1px solid var(--error);
   }
->>>>>>> 798b4bb828d684611bca482e23407eb04244285e
+
