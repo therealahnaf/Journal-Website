@@ -3,8 +3,18 @@ import './Navbar.css'
 import logo from '../Assets/journal_logo.png'
 import chat from '../Assets/chat.png'
 import { Link } from 'react-router-dom'
+import { useLogout } from '../../Hooks/useLogout'
+import { useAuthContext } from '../../Hooks/useAuthContext'
 export const Navbar = () => {
     const [menu, setMenu] = useState("Home")
+
+    const { logout } = useLogout()
+    const { user } = useAuthContext()
+
+    const handleClick = () => {
+        logout()
+    }
+
     return (
         <div className='navbar'>
             <div className='navbar-logo'>
@@ -23,9 +33,13 @@ export const Navbar = () => {
                     10
                 </div>
             </div>
-            <div className="logout">
-                <button>Logout</button>
+            {user && (
+                <div className="logout">
+                <span>{user.email}</span>
+                <button onClick={handleClick} >Logout</button>
             </div>
+            )}
+            
         </div>
     )
 }
