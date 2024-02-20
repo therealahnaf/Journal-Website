@@ -38,7 +38,7 @@
     width: 80%;
     height: 3px;
     border-radius: 10px;
-    background: #00abb1;
+    background: #0066ff;
 }
 .nav-chat button:active{ /* here the button active is the click function of mouse*/
     background: #000000;

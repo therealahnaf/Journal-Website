@@ -3,8 +3,8 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #008585;
     color: #000000;
+    background-image: url('../Assets/homecontent.jpg');
 }
 .footer img {
         margin: 0 210px; /* Display images in a row */
