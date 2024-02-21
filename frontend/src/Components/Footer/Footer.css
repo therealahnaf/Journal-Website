@@ -4,18 +4,21 @@
     bottom: 0;
     width: 100%;
     color: #000000;
-    background-image: url('../Assets/homecontent.jpg');
-}
+    backdrop-filter: blur(15px);
+    background: transparent;
+    border-radius: 10px;
+    color: white;
+  }
 .footer img {
-        margin: 0 210px; /* Display images in a row */
+        margin-left: 23%; /* Display images in a row */
 }
 
 .footer p1 {
-    margin: 0 190px; /* Remove default margin for paragraphs */
+    margin-left: 21.7%; /* Remove default margin for paragraphs */
 }
 .footer p2 {
-    margin: 0 155px; /* Remove default margin for paragraphs */
+    margin-left: 18.5%; /* Remove default margin for paragraphs */
 }
 .footer p3 {
-    margin: 0 170px; /* Remove default margin for paragraphs */
+    margin-left: 17.5%; /* Remove default margin for paragraphs */
 }

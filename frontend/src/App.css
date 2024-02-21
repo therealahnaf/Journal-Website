@@ -3,6 +3,7 @@ body {
     padding: 0;
     font-family: Arial, sans-serif;
     min-height: 100vh;
-    background-image: radial-gradient(lightblue,rgb(0, 174, 255),rgb(0, 153, 255));
+    background-image: url('..//src//Components//Assets//bluemountainbg.jpg');
     overflow-y: hidden;
+    background-size: cover;
   }

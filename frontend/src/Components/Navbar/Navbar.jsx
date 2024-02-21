@@ -22,10 +22,10 @@ export const Navbar = () => {
                 <p>MoodLog</p>
             </div>
             <ul className="nav-menu">
-                <li onClick={() => { setMenu("Profile") }}><Link style={{ color: '#000', textDecoration: 'none' }} to='/Profile'>Profile</Link>{menu === "Profile" ? <hr /> : <></>}</li>
-                <li onClick={() => { setMenu("Journal") }}><Link style={{ color: '#000', textDecoration: 'none' }} to='/Journal'>Journal</Link>{menu === "Journal" ? <hr /> : <></>}</li>
-                <li onClick={() => { setMenu("Community") }}><Link style={{ color: '#000', textDecoration: 'none' }} to='/Community'>Community</Link>{menu === "Community" ? <hr /> : <></>}</li>
-                <li onClick={() => { setMenu("About") }}><Link style={{ color: '#000', textDecoration: 'none' }} to='/About'>About</Link>{menu === "About" ? <hr /> : <></>}</li>
+                <li onClick={() => { setMenu("Profile") }}><Link style={{ color: '#fff', textDecoration: 'none' }} to='/Profile'>Profile</Link>{menu === "Profile" ? <hr /> : <></>}</li>
+                <li onClick={() => { setMenu("Journal") }}><Link style={{ color: '#fff', textDecoration: 'none' }} to='/Journal'>Journal</Link>{menu === "Journal" ? <hr /> : <></>}</li>
+                <li onClick={() => { setMenu("Community") }}><Link style={{ color: '#fff', textDecoration: 'none' }} to='/Community'>Community</Link>{menu === "Community" ? <hr /> : <></>}</li>
+                <li onClick={() => { setMenu("About") }}><Link style={{ color: '#fff', textDecoration: 'none' }} to='/About'>About</Link>{menu === "About" ? <hr /> : <></>}</li>
             </ul>
             <div className='nav-chat'>
                 <Link style={{ color: '#000', textDecoration: 'none' }} to='/Chat'><img src={chat} alt="" /></Link>
