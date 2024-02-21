@@ -9,6 +9,7 @@ import  Community  from './Pages/Community';
 import Jounral from './Pages/Journal';
 import Profile from './Pages/Profile';
 import  About  from './Pages/About';
+import Chat from './Pages/Chat';
 function App() {
   const location = useLocation();
   const isHomeorLogin = location.pathname === '/' || location.pathname === '/Login' || location.pathname === '/Signup';
@@ -22,6 +23,7 @@ function App() {
       <Route path="/Journal" element={<Jounral/> } />
       <Route path="/Community" element={<Community/>} />
       <Route path="/About" element={<About/> } />
+      <Route path="/Chat" element={<Chat/> } />
       <Route path="/Login" element={<Login/> } />
       <Route path="/Signup" element={<Signup/> } />
     </Routes>

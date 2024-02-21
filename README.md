@@ -21,5 +21,6 @@ Navbar and Footer - FrontEnd and BackEnd (Mubtasim Fuad Mahde)
 Home Page - FrontEnd (Mubtasim Fuad Mahde)
 About Page - 
 Profile Page - 
-Community Page - 
+Community Page -
 Journal Page - 
+Chat Page -
