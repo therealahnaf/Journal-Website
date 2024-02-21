@@ -6,4 +6,4 @@ Group Members (Name with ID):
                4. Tanjeemul Islam (19141010)
                                 
 Selected Project: Journal Website: Sentiment-Driven Personal Diary with Photo Memories integrated with AI 
-Class Diagram link: 
+Class Diagram link: https://drive.google.com/file/d/1JtLBWwpC7sPI0bPAvff3zTXTG-Jb5-p4/view?usp=sharing 
