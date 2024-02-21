@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
- 
-export const ChatRoom = () => {
+import { useAuthContext } from './useAuthContext';
+
+export const useChat = () => {
     const [messages, setMessages] = useState([]);
-    const [user, setUser] = useState('');
+    const {user} = useAuthContext();
     const [message, setMessage] = useState('');
- 
+
     const fetchMessages = async () => {
         try {
             const response = await fetch('http://localhost:4000/api/messages');
@@ -16,13 +17,14 @@ export const ChatRoom = () => {
     };
  
     const sendMessage = async () => {
+        const user_id = user._id
         try {
             await fetch('http://localhost:4000/api/messages', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ user, message }),
+                body: JSON.stringify({ user_id , message }),
             });
  
             // Clear the message input after sending
@@ -34,5 +36,5 @@ export const ChatRoom = () => {
         }
     };
  
-    return {fetchMessages, sendMessage}
+    return {messages, sendMessage}
 }
