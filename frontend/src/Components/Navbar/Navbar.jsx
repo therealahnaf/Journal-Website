@@ -35,7 +35,6 @@ export const Navbar = () => {
             </div>
             {user && (
                 <div className="logout">
-                <span>{user.email}</span>
                 <button onClick={handleClick} >Logout</button>
             </div>
             )}
