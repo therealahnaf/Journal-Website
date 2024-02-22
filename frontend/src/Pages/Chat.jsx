@@ -1,17 +1,18 @@
 // ChatRoom.js
 import React, { useState, useEffect } from 'react';
 import { useAuthContext } from '../Hooks/useAuthContext';
+import './Chat.css'
 const ChatRoom = () => {
 	const [messages, setMessages] = useState([]);
 	const { user } = useAuthContext();
 	const [message, setMessage] = useState('');
-  const email = user.email
+	const email = user.email
 
 	const fetchMessages = async () => {
 		try {
 			const response = await fetch('http://localhost:4000/api/messages/messages');
 			const data = await response.json();
-      console.log(data)
+			console.log(data)
 			setMessages(data);
 		} catch (error) {
 			console.error('Error fetching messages:', error);
@@ -20,7 +21,7 @@ const ChatRoom = () => {
 
 	const sendMessage = async () => {
 		try {
-      console.log({email,message})
+			console.log({ email, message })
 			await fetch('http://localhost:4000/api/messages/messages', {
 				method: 'POST',
 				headers: {
@@ -30,7 +31,7 @@ const ChatRoom = () => {
 			});
 
 			// Clear the message input after sending
-			setMessage();
+			setMessage('');
 			// Fetch messages to update the list
 			fetchMessages();
 		} catch (error) {
@@ -50,26 +51,34 @@ const ChatRoom = () => {
 	}, []); // Run only once on mount
 
 	return (
-		<div>
-			<h2>Chat Room</h2>
+		<div className="chatbox">
 			<ul>
 				{messages.map((message) => (
-					<li key={message._id} style={{color: '#fff'}}>
-						<strong >{message.email}:</strong> {message.message}
+					<li key={message._id}>
+						<strong className='chatemail'>{message.email.split('@')[0]}</strong>
+						<div className="messagecontainer">
+							<div className="message-container">
+								<p class= 'p4'>{message.message}</p>
+								<p class= 'p5'>{message.timestamp.split('T')[0]} {message.timestamp.split('T')[1].split(':').slice(0, 2)[0]}:{message.timestamp.split('T')[1].split(':').slice(0, 2)[1]}</p>
+							</div>
+						</div>
 					</li>
 				))}
 			</ul>
-			<div>
-				<input style={{color: '#000'}}
+			<div className='messageinput'>
+				<input
 					type="text"
 					placeholder="Type your message..."
 					value={message}
 					onChange={(e) => setMessage(e.target.value)}
 				/>
+				<div className="messageinputbutton">
 				<button onClick={sendMessage}>Send</button>
+				</div>
 			</div>
 		</div>
+
+
 	);
 };
-
 export default ChatRoom;

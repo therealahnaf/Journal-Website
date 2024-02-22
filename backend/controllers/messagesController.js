@@ -3,8 +3,8 @@ const messages = require('../models/messagesModel')
 const getMessages = async (req, res) => {
 
     try {
-        const messagedata = await messages.find()
-
+        const messagedata = await messages.find().sort({timestamp: -1}).limit(5)
+        messagedata.reverse();
         res.status(200).json(messagedata)
     } catch (error) {
         res.status(400).json({error: error.message})

@@ -22,7 +22,7 @@ form.signup, form.login {
     border: 1px solid #ddd;
     border-radius: 4px;
     box-sizing: border-box;
-    color: white;
+    color: rgb(0, 0, 0);
   }
   
   div.error {
@@ -32,6 +32,7 @@ form.signup, form.login {
     color: var(--error);
     border-radius: 4px;
     margin: 20px 0;
+    color:black;
   }
   input.error {
     border: 1px solid var(--error);
