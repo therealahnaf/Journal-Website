@@ -3,7 +3,7 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const userRoutes = require('./routes/user')
-const chatRoutes = require('./routes/chat')
+const messagesRoutes = require('./routes/messages')
 const cors = require('cors')
 
 const app = express()
@@ -25,7 +25,7 @@ app.use((req, res, next) => {
 
 app.use('/api/user', userRoutes)
 
-app.use('/api/messages', chatRoutes)
+app.use('/api/messages', messagesRoutes)
 
 
 // connect to db
