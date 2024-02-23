@@ -25,4 +25,17 @@ const createPost = async (req, res) => {
     }
 }
 
-module.exports = { getPosts, createPost }
+const getPost = async (req, res) => {
+  const { id } = req.params
+  console.log(id)
+
+  try {
+      const postdata = await posts.findById(id);
+
+      res.status(200).json(postdata)
+  } catch (error) {
+      res.status(400).json({error: error.message})
+  }
+}
+
+module.exports = { getPosts, createPost, getPost }

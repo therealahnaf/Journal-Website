@@ -2,13 +2,13 @@
 import './Community.css'
 import React, { useState, useEffect } from 'react';
 import { useAuthContext } from '../Hooks/useAuthContext';
+import { Link } from 'react-router-dom';
 
 const Community = () => {
   const [posts, setPosts] = useState([]);
 	const { user } = useAuthContext();
 	const [postTitle, setPosttitle] = useState('');
   const [postContent, setPostcontent] = useState('');
-	const [error, setError] = useState(null)
 
 	const fetchPosts = async () => {
 		try {
@@ -23,11 +23,6 @@ const Community = () => {
 	};
 
 	const sendPost = async () => {
-		if (!user) {
-			setError('You must be logged in')
-			return
-		}
-
 		try {
 			const email = user.email
       console.log(postTitle, postContent)
@@ -63,7 +58,9 @@ const Community = () => {
 			<ul>
 				{posts.map((post) => (
 					<ul key={post._id} style={{color: '#fff'}}>
+            <Link to={`Details/${post._id}`}>
 						<h2>{post.title}</h2>
+            </Link>
             <p>{post.content}</p>
             <p>by: {post.email}</p>
 					</ul>
