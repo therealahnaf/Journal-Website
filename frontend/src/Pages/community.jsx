@@ -3,6 +3,7 @@ import './Community.css'
 import React, { useState, useEffect } from 'react';
 import { useAuthContext } from '../Hooks/useAuthContext';
 import bloglogo from '../Components/Assets/communityblog.png'
+import { Link } from 'react-router-dom';
 
 const Community = () => {
 	const [posts, setPosts] = useState([]);
@@ -24,11 +25,6 @@ const Community = () => {
 	};
 
 	const sendPost = async () => {
-		if (!user) {
-			setError('You must be logged in')
-			return
-		}
-
 		try {
 			const email = user.email
 			console.log(postTitle, postContent)
