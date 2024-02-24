@@ -43,6 +43,12 @@
     background: #ffffff;
     
 }
+.nav-chat{
+    margin-top: -15px;
+}
+.nav-chat ul{
+    list-style-type: none;
+}
 .nav-chat button:active{ /* here the button active is the click function of mouse*/
     background: #000000;
 }

@@ -51,29 +51,32 @@ const ChatRoom = () => {
 	}, []); // Run only once on mount
 
 	return (
-		<div className="chatbox">
-			<ul>
-				{messages.map((message) => (
-					<li key={message._id} className={message.email === email ? 'right_li':'left_li'}>
-						<strong className='chatemail'>{message.email.split('@')[0]}</strong>
-						<div className={message.email === email ? 'messagecontainer_r':'messagecontainer_l'}>
-							<div className="message-container">
-								<p class= 'p4'>{message.message}</p>
-								<p class= 'p5'>{message.timestamp.split('T')[0]} {message.timestamp.split('T')[1].split(':').slice(0, 2)[0]}:{message.timestamp.split('T')[1].split(':').slice(0, 2)[1]}</p>
+		<div className="chatroom">
+			<h1>Chat Room</h1>
+			<div className="chatbox">
+				<ul>
+					{messages.map((message) => (
+						<li key={message._id} className={message.email === email ? 'right_li' : 'left_li'}>
+							<strong className='chatemail'>{message.email.split('@')[0]}</strong>
+							<div className={message.email === email ? 'messagecontainer_r' : 'messagecontainer_l'}>
+								<div className="message-container">
+									<p class='p4'>{message.message}</p>
+									<p class='p5'>{message.timestamp.split('T')[0]} {message.timestamp.split('T')[1].split(':').slice(0, 2)[0]}:{message.timestamp.split('T')[1].split(':').slice(0, 2)[1]}</p>
+								</div>
 							</div>
-						</div>
-					</li>
-				))}
-			</ul>
-			<div className='messageinput'>
-				<input
-					type="text"
-					placeholder="Type your message..."
-					value={message}
-					onChange={(e) => setMessage(e.target.value)}
-				/>
-				<div className="messageinputbutton">
-				<button onClick={sendMessage}>Send</button>
+						</li>
+					))}
+				</ul>
+				<div className='messageinput'>
+					<input
+						type="text"
+						placeholder="Type your message..."
+						value={message}
+						onChange={(e) => setMessage(e.target.value)}
+					/>
+					<div className="messageinputbutton">
+						<button onClick={sendMessage}>Send</button>
+					</div>
 				</div>
 			</div>
 		</div>

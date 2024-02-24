@@ -1,7 +1,12 @@
+.chatroom {
+    color: white;
+}
+.chatroom h1{
+    text-align: center;
+}
 .chatbox{
     margin:auto;
     max-width: 1000px;
-    border-radius: 4px;
     background-color: aqua;
     backdrop-filter: blur(12px);
     background: transparent;
@@ -9,7 +14,7 @@
     border-radius: 30px;
     color: white;
     padding: 10px;
-    height: 501.5px;
+    height: 651px;
 }
 .chatbox ul {
     list-style-type: none;

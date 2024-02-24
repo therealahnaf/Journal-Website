@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { useLogout } from '../../Hooks/useLogout'
 import { useAuthContext } from '../../Hooks/useAuthContext'
 export const Navbar = () => {
-    const [menu, setMenu] = useState("Home")
+    const [menu, setMenu] = useState('Profile')
 
     const { logout } = useLogout()
     const { user } = useAuthContext()
@@ -28,10 +28,11 @@ export const Navbar = () => {
                 <li onClick={() => { setMenu("About") }}><Link style={{ color: '#fff', textDecoration: 'none' }} to='/About'>About</Link>{menu === "About" ? <hr /> : <></>}</li>
             </ul>
             <div className='nav-chat'>
-                <Link style={{ color: '#000', textDecoration: 'none' }} to='/Chat'><img src={chat} alt="" /></Link>
+                <ul><li onClick={() => { setMenu("Chat") }}><Link style={{ color: '#000', textDecoration: 'none' }} to='/Chat'><img src={chat} alt="" /></Link>
                 <div className='nav-chat-count'> {/* this class is used to add counter to the cart icon*/}
                     10
                 </div>
+                </li></ul>
             </div>
             {user && (
                 <div className="logout">

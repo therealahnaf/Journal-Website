@@ -1,0 +1,50 @@
+.blogfullpage{
+    display: flex;
+    align-items: center;
+}
+.allblog{
+    max-width: 1300px;
+    overflow: scroll;
+    height: 85vh;
+}
+.eachblog {
+    list-style-type: none;
+}
+.eachblog li{
+    margin:auto;
+    max-width: 1300px;
+    background-color: aqua;
+    backdrop-filter: blur(12px);
+    background: transparent;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 30px;
+    color: white;
+    margin-bottom: 20px;
+    height: fit-content;
+}
+.eachblog li img{
+    max-width: 40px;
+    max-height: 40px;
+    margin-left: 20px;
+    margin-top: 12px;
+}
+.titleandlogo{
+    display: flex;
+}
+.author{
+    padding: 0px;
+    text-align: right;
+    margin-right: 20px;
+    margin-top: -10px;
+}
+.eachblog p{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+/* width */
+::-webkit-scrollbar {
+    width: 0px;    
+  }
+.bloginput{
+    margin-left: 50px;
+}

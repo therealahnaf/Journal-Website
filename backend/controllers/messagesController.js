@@ -3,7 +3,7 @@ const messages = require('../models/messagesModel')
 const getMessages = async (req, res) => {
 
     try {
-        const messagedata = await messages.find().sort({timestamp: -1}).limit(5)
+        const messagedata = await messages.find().sort({timestamp: -1}).limit(7)
         messagedata.reverse();
         res.status(200).json(messagedata)
     } catch (error) {
@@ -17,6 +17,8 @@ const postMessages = async (req, res) => {
 
     try {
         const user = await messages.postingmessage(email, message)
+
+        await messages.findOneAndDelete({}, { sort: { 'timestamp': 1 } });
 
         res.status(200).json({email, token})
     } catch (error) {

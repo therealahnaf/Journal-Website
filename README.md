@@ -24,4 +24,3 @@ Profile Page -
 Community Page - FrontEnd and BackEnd (Ahnaf Hassan)
 Journal Page - 
 Chat Page - FrontEnd and BackEnd (Mubtasim Fuad Mahde and Ahnaf Hassan)
-fix - requireAuth
