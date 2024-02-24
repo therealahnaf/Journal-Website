@@ -73,13 +73,14 @@ const Community = () => {
 				</ul>
 			</div>
 			<div className='bloginput'>
+				<h1>New Blog Post</h1>
 				<input style={{ color: '#000' }} className='blogtitleinput'
 					type="text"
 					placeholder="Type your title"
 					value={postTitle}
 					onChange={(e) => setPosttitle(e.target.value)}
 				/>
-				<input style={{ color: '#000' }} className='blogcontentinput'
+				<textarea style={{ color: '#000' }} className='blogcontentinput'
 					type="text"
 					placeholder="Type your content"
 					value={postContent}

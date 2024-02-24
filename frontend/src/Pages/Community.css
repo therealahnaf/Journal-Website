@@ -14,7 +14,7 @@
     margin:auto;
     max-width: 1300px;
     background-color: aqua;
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(10px);
     background: transparent;
     border: 2px solid rgb(255, 255, 255);
     border-radius: 30px;
@@ -30,6 +30,11 @@
 }
 .titleandlogo{
     display: flex;
+    flex-direction:row;
+}
+.titleandlogo a{
+    text-decoration: none;
+    color: white;
 }
 .author{
     padding: 0px;
@@ -47,4 +52,34 @@
   }
 .bloginput{
     margin-left: 50px;
+}
+.bloginput {
+    background-color: aqua;
+    backdrop-filter: blur(10px);
+    background: transparent;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 30px;
+    color: white;
+    width: 60vh;
+    height: 80.3vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.blogtitleinput {
+    margin-top: 100px;
+    max-width: 400px;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.blogcontentinput{
+    padding: 20px;
+    width: 360px;
+    height: 200px;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 30px;
+    margin-bottom: 40px;
+    font-size: 18px;
 }

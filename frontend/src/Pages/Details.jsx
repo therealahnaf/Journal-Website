@@ -4,8 +4,9 @@ import Comments from './Comments';
 
 const Details = () => {    
     const [post, setPost] = useState({});
+    const [email,setEmail] = useState(null)
     const { id } = useParams();
-    
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -13,6 +14,7 @@ const Details = () => {
                 if (response.ok) {
                     const data = await response.json();
                     setPost(data);
+                    setEmail(data.email.split('@')[0])
                 } else {
                     console.error('Error fetching post:', response.status);
                 }
