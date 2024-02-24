@@ -62,7 +62,9 @@ const Community = () => {
 						<li key={post._id} style={{ color: '#fff' }}>
 							<div className="titleandlogo">
 							<img src={bloglogo} alt="" />
-							<h2>{post.title}</h2>
+							<Link to={`Details/${post._id}`}>
+                        		<h2>{post.title}</h2>
+            				</Link>
 							</div>
 							<p>{post.content}</p>
 							<p className='author'>-{post.email.split('@')[0]}</p>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import Comments from './Comments';
 
 const Details = () => {    
     const [post, setPost] = useState({});
@@ -27,7 +28,9 @@ const Details = () => {
             <h2>{post.title}</h2>
             <p>{post.content}</p>
             <p>by: {post.email}</p>
+            <Comments post={post} />
         </div>
+        
     );
 };
 
