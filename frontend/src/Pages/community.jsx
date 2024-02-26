@@ -1,10 +1,9 @@
 
-import './Community.css'
 import React, { useState, useEffect } from 'react';
 import { useAuthContext } from '../Hooks/useAuthContext';
 import bloglogo from '../Components/Assets/communityblog.png'
 import { Link } from 'react-router-dom';
-
+import './Community.css'
 const Community = () => {
 	const [posts, setPosts] = useState([]);
 	const { user } = useAuthContext();

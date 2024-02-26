@@ -1,25 +1,44 @@
-/*text-transform: capitalize;*/
-.blogtitle{
-    text-align: center;
-    color: white;   
+.fulldetailspage{
+    display: flex;
+    flex-direction: row;
 }
-.blogemail{
+
+.fulldetailspage h1{
     text-align: center;
     color: white;
-    font-size: large;
-    text-transform: capitalize;
 }
-.blogcontentbox{
-    backdrop-filter: blur(10px);
+
+.blogcontent{
+    margin:auto;
+    max-width: 1300px;
+    background-color: aqua;
+    backdrop-filter: blur(20px);
     background: transparent;
     border: 2px solid rgb(255, 255, 255);
     border-radius: 30px;
-    height: 40vh;
-    max-width: 1200px;
-    margin: auto;
-}
-.blogcontent{
     color: white;
-    font-size: 20px;
-    padding: 20px;
+    margin-bottom: 20px;
+    height: 73.65vh;
+}
+.titleandcommentlogo{
+    display: flex;
+    flex-direction: row;
+    padding: 50px;
+}
+.titleandcommentlogo h2{
+    font-size: 50px;
+}
+.titleandcommentlogo img{
+    width: 100px;
+    height: 100px;
+    margin-top: 20px;
+}
+.blogcontent p{
+    font-size: 25px;
+    padding: 50px;
+    padding-top: 0px;
+}
+.blogcontent p1{
+    font-size: 30px;
+    margin-left: 1000px;
 }

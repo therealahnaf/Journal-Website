@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Comments from './Comments';
-
-const Details = () => {    
+import './Details.css'
+import bloglogo from '../Components/Assets/communityblog.png'
+const Details = () => {
     const [post, setPost] = useState({});
-    const [email,setEmail] = useState(null)
+    const [email, setEmail] = useState(null)
     const { id } = useParams();
 
     useEffect(() => {
@@ -26,13 +27,23 @@ const Details = () => {
     }, [id]);
 
     return (
-        <div>
-            <h2>{post.title}</h2>
-            <p>{post.content}</p>
-            <p>by: {post.email}</p>
-            <Comments post={post} />
+        <div className='fulldetailspage'>
+            <div className="blogbox">
+                <h1>Blog Details</h1>
+                <div className="blogcontent">
+                    <div className="titleandcommentlogo">
+                        <img src={bloglogo} alt="" />
+                        <h2>{post.title}</h2>
+                    </div>
+                    <p>{post.content}</p>
+                    <p1>Author: {email}</p1>
+                </div>
+            </div>
+            <div className="commentbox">
+                <Comments post={post} />
+            </div>
         </div>
-        
+
     );
 };
 

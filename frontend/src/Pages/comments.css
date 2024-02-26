@@ -1,0 +1,42 @@
+.commentpagebox h1{
+    margin-left: 35px;
+}
+.commentpagebox{
+    text-align: center;
+}
+.commentinput{
+    margin-top: 20px;
+    margin-left: 40px;
+    padding: 50px;
+    width: 450px;
+    background-color: aqua;
+    backdrop-filter: blur(10px);
+    background: transparent;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 30px;
+    color: white;
+    height: 62.65vh;
+}
+.eachcomment{
+    list-style: none;
+}
+.commentshowbox{
+    overflow: scroll;
+    max-height: 55vh;
+}
+.eachcomment li{
+    margin: 20px;
+    margin-left: -20px;
+    background-color: aqua;
+    backdrop-filter: blur(30px);
+    background: transparent;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 30px;
+    color: white;
+    text-align: left;
+    padding-left: 20px;
+    padding-right: 10px;
+}
+.commentby::first-letter{
+    text-transform: capitalize;
+}

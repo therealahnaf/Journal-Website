@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAuthContext } from '../Hooks/useAuthContext';
-
+import './comments.css'
 const Comments = ({ post }) => {
 
     const [comment, setComment] = useState('');
@@ -11,17 +11,17 @@ const Comments = ({ post }) => {
 
 
     const fetchComments = async () => {
-            try {
-                const response = await fetch(`http://localhost:4000/api/posts/comments/${id}`, {
-                });
-                const data = await response.json();
-                console.log(response.ok)
-                setComments(data);
-            } catch (error) {
-                console.error('Error fetching comments:', error);
-            }
-        };
-    
+        try {
+            const response = await fetch(`http://localhost:4000/api/posts/comments/${id}`, {
+            });
+            const data = await response.json();
+            console.log(response.ok)
+            setComments(data);
+        } catch (error) {
+            console.error('Error fetching comments:', error);
+        }
+    };
+
 
     const handleChange = (e) => {
         setComment({
@@ -56,32 +56,33 @@ const Comments = ({ post }) => {
     }
 
     useEffect(() => {
-		// Fetch posts on component mount
-		if (user) {
-			fetchComments();
-			return
-		}
-	}, [user]);
+        // Fetch posts on component mount
+        if (user) {
+            fetchComments();
+            return
+        }
+    }, [user]);
 
     return (
-        <div>
-            <ul className='eachblog'>
-                {comments.map((comment) => (
-                    <li key={comment._id} style={{ color: '#fff' }}>
-                        <p>{comment.comments}</p>
-                        <p className='author'>-{comment.email.split('@')[0]}</p>
-                    </li>
-                ))}
-            </ul>
-
-            <div className='bloginput'>
-                <input style={{ color: '#000' }} className='blogcontentinput'
+        <div className="commentpagebox">
+            <h1>Comments</h1>
+            <div className='commentinput'>
+                <input style={{ color: '#000' }} className='commentcontentinput'
                     type="text"
-                    placeholder="Type your content"
+                    placeholder="Type your Comment"
                     value={comment}
                     onChange={(e) => setComment(e.target.value)}
                 />
                 <button onClick={addComment}>Send</button>
+                <div className="commentshowbox">
+                <ul className='eachcomment'>
+                    {comments.map((comment) => (
+                        <li key={comment._id} style={{ color: '#fff' }}>
+                            <p className='commentby'><b>{comment.email.split('@')[0]}:</b> {comment.comments}</p>
+                        </li>
+                    ))}
+                </ul>
+                </div>
             </div>
         </div>
     )

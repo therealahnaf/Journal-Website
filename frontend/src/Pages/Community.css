@@ -23,18 +23,22 @@
     height: fit-content;
 }
 .eachblog li img{
-    max-width: 40px;
-    max-height: 40px;
+    max-width: 50px;
+    max-height: 50px;
     margin-left: 20px;
-    margin-top: 12px;
+    margin-top: 20px;
 }
 .titleandlogo{
     display: flex;
     flex-direction:row;
+    padding: 0;
 }
 .titleandlogo a{
     text-decoration: none;
     color: white;
+}
+.titleandlogo h2{
+    font-size: 35px;
 }
 .author{
     padding: 0px;

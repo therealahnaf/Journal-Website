@@ -30,7 +30,7 @@ const newComment = async (req, res) => {
 const getComments = async (request, response) => {
     try {
         const comments = await commentmodel.find({ postId: request.params.id });
-        
+        comments.reverse()
         response.status(200).json(comments);
     } catch (error) {
         response.status(500).json(error)
