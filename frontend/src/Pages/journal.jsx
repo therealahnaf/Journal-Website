@@ -26,6 +26,7 @@ export const Journal = () => {
 
       // Parse the JSON response
       const data = response;
+      console.log(data)
 
       // Find the label with the highest score
       let maxScoreLabel = '';
