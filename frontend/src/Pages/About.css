@@ -3,7 +3,7 @@ body {
     padding: 0;
     font-family: Arial, sans-serif;
     min-height: 100vh;
-    background-image: url('..//src//Components//Assets//bluemountainbg.jpg');
+    background-image: url('..//Components//Assets//bluemountainbg.jpg');
     overflow-y: auto;
     background-size: cover;
   }

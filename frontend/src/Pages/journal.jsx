@@ -52,7 +52,7 @@ export const Journal = () => {
   }
   
   return (
-    <div>return (
+    <div>
       <div className="commentpagebox">
           <h1>Write Journal</h1>
           {sentiment && (
@@ -72,7 +72,7 @@ export const Journal = () => {
               
           </div>
       </div>
-  )</div>
+  </div>
   )
 }
 export default Journal

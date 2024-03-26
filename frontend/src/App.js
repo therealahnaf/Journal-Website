@@ -11,6 +11,7 @@ import Profile from './Pages/Profile';
 import  About  from './Pages/About';
 import Chat from './Pages/Chat';
 import Details from './Pages/Details';
+import Editprofile from './Pages/Editprofile';
 
 import { useAuthContext } from './Hooks/useAuthContext'
 function App() {
@@ -24,6 +25,7 @@ function App() {
     <Routes>
       <Route exact path="/" element={<Home/> } />
       <Route path="/Profile" element={user ? <Profile/> : <Navigate to="/"/>} />
+      <Route path="/Profile/Editprofile" element={user ? <Editprofile /> : <Navigate to="/" />} />
       <Route path="/Journal" element={user ? <Jounral/> : <Navigate to="/"/> } />
       <Route path="/Community" element={user ? <Community/> : <Navigate to="/"/>} />
       <Route path="Community/Details/:id" element={user ? <Details /> : <Navigate to="/" />} />
