@@ -26,7 +26,6 @@ const Community = () => {
 	const sendPost = async () => {
 		try {
 			const email = user.email
-			console.log(postTitle, postContent)
 			await fetch('http://localhost:4000/api/posts', {
 				method: 'POST',
 				headers: {

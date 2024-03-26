@@ -1,0 +1,29 @@
+.editprofileform {
+    max-width: 500px;
+    border-radius: 40px;
+    background-color: aqua;
+    margin:auto;
+    margin-top: 5%;
+    backdrop-filter: blur(15px);
+    background: transparent;
+    border: 2px solid rgb(255, 255, 255);
+    color: white;
+    padding: 40px;
+  }
+input {
+    display: block;
+    font-size: 30px;
+    margin-left: 20px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 90%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+  }
+.editprofilebutton{
+    align-items: center;
+    margin-left: 35%;
+}
