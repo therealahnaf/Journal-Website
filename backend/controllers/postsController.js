@@ -4,6 +4,7 @@ const getPosts = async (req, res) => {
 
     try {
         const postdata = await posts.find()
+        postdata.reverse()
 
         res.status(200).json(postdata)
     } catch (error) {
