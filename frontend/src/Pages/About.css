@@ -1,0 +1,42 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background-image: url('..//src//Components//Assets//bluemountainbg.jpg');
+    overflow-y: auto;
+    background-size: cover;
+  }
+  
+  .app-container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: aqua;
+    background: transparent;
+    color: white; /* Set font color to white */
+  }
+  
+  .about-us-container {
+    background-color: aqua;
+    backdrop-filter: blur(10px);
+    background: transparent;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    padding: 20px;
+    color: white; /* Set font color to white */
+  }
+  
+  .section {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    color: white; /* Set font color to white */
+  }
+  
+  h2 {
+    color: white; /* Set font color to white */
+  }
+  
