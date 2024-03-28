@@ -24,13 +24,65 @@ export const Journal = () => {
   };
 
   useEffect(() => {
-		// Fetch posts on component mount
-		if (user) {
-			fetchJournals(user.email);
-			return
-		}
-	}, [user]); 
-
+    // Fetch posts on component mount
+    if (user) {
+      fetchJournals(user.email);
+    }
+  }, [user]);
+  
+  useEffect(() => {
+    if (journals.length > 0) {
+      const journalcontentArray = journals.map(row => row.journalcontent);
+  
+      if (journals.length > 4) {
+        // If there are more than 2 journals, slice the array and join the elements
+        const updatedRecentJournals = journalcontent.concat(' ').concat(journalcontentArray.slice(0, 5).join(' '));
+        setrecentJournals(updatedRecentJournals);
+        console.log(updatedRecentJournals); // Log the updated value
+      } else {
+        // If there are 2 or fewer journals, join all elements
+        const updatedRecentJournals = journalcontent.concat(' ').concat(journalcontentArray.join(' '));
+        setrecentJournals(updatedRecentJournals);
+        console.log(updatedRecentJournals); // Log the updated value
+      }
+    }
+  }, [journals]);
+  
+  useEffect(() => {
+    if (recentJournals !== '') {
+      const fetchData = async () => {
+        try {
+          const response = await query({ "inputs": recentJournals });
+          // Parse the JSON response
+          const data = response;
+          console.log(data);
+  
+          // Find the label with the highest score
+          let maxScoreLabel = '';
+          let maxScore = -1;
+          for (const entry of data[0]) {
+            if (entry.score > maxScore) {
+              maxScore = entry.score;
+              maxScoreLabel = entry.label;
+            }
+          }
+  
+          // Display the label with the highest score
+          setSentiment(maxScoreLabel);
+          console.log("Label with highest score:", maxScoreLabel);
+  
+          setContent('');
+          // Fetch posts to update the list
+          fetchJournals(user.email);
+        } catch (error) {
+          console.error('Error sending message:', error);
+        }
+      };
+  
+      fetchData();
+    }
+  }, [recentJournals]);
+  
 
   async function query(data) {
     const response = await fetch(
@@ -64,12 +116,12 @@ export const Journal = () => {
 
       if (journals.length > 4) {
         // If there are more than 2 journals, slice the array and join the elements
-        const updatedRecentJournals = journalcontentArray.slice(0, 5).join(' ');
+        const updatedRecentJournals = journalcontent.concat(' ').concat(journalcontentArray.slice(0, 5).join(' '));
         setrecentJournals(updatedRecentJournals);
         console.log(updatedRecentJournals); // Log the updated value
       } else {
         // If there are 2 or fewer journals, join all elements
-        const updatedRecentJournals = journalcontentArray.join(' ');
+        const updatedRecentJournals =  journalcontent.concat(' ').concat(journalcontentArray.join(' '));
         setrecentJournals(updatedRecentJournals);
         console.log(updatedRecentJournals); // Log the updated value
       }
@@ -103,7 +155,6 @@ export const Journal = () => {
 
         // Fetch posts to update the list
         // fetchComments();
-      fetchJournals(user.email);
     } catch (error) {
         console.error('Error sending message:', error);
     }
