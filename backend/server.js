@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const userRoutes = require('./routes/user')
 const messagesRoutes = require('./routes/messages')
 const postsRoutes = require('./routes/posts')
+const journalRoutes = require('./routes/journals')
 const editRoutes = require('./routes/edit')
 const cors = require('cors')
 
@@ -32,6 +33,8 @@ app.use('/api/messages', messagesRoutes)
 app.use('/api/posts', postsRoutes)
 
 app.use('/api/edit', editRoutes)
+
+app.use('/api/journals', journalRoutes)
 
 
 // connect to db
