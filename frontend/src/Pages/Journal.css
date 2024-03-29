@@ -1,0 +1,99 @@
+.journalfullpage{
+    height: 157vh;
+}
+.writejournal{
+    display: flex;
+    align-items: center;
+    padding: 2%;
+}
+.journalinput{
+    background-color: aqua;
+    backdrop-filter: blur(10px);
+    background: transparent;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 30px;
+    color: white;
+    width: 65%;
+    height: 50vh;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+    margin-left: 10px;
+}
+.writejounraltitle{
+    margin-left: 40%;
+}
+.journalinputarea{
+    padding: 30px;
+    width: 480px;
+    height: 200px;
+    margin-bottom: 40px;
+    margin-left: 19%;
+    font-size: 18px;
+    border-radius: 30px;
+}
+.jounralsendbutton{
+    margin-left: 43%;
+}
+.journalright{
+    background-color: aqua;
+    backdrop-filter: blur(10px);
+    background: transparent;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 30px;
+    color: white;
+    width: 70%;
+    height: 50vh;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    margin-right: 18px;
+}
+.journalright h1{
+    padding: 150px;
+}
+.prevjournals{
+    max-width: 100%;
+    height: 85vh;
+    background-color: aqua;
+    backdrop-filter: blur(10px);
+    background: transparent;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 30px;
+    color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.prevjournals h1{
+    margin: auto;
+    padding: 20px;
+}
+.eachblog {
+    list-style-type: none;
+}
+.eachblog li{
+    margin:auto;
+    width: 1920px;
+    max-width: 1300px;
+    background-color: aqua;
+    backdrop-filter: blur(10px);
+    background: transparent;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 30px;
+    color: white;
+    margin-bottom: 20px;
+    height: fit-content;
+}
+.eachblog li img{
+    max-width: 50px;
+    max-height: 50px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.prevjournalcontainer{
+    overflow: scroll;
+}
