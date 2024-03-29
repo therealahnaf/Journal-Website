@@ -1,13 +1,49 @@
 import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAuthContext } from '../Hooks/useAuthContext';
+//const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 export const Journal = () => {
   const [journalcontent, setContent] = useState('');
   const [sentiment, setSentiment] = useState('')
+  const [question, setQuestion] = useState('')
   const [recentJournals, setrecentJournals] = useState('')
   const { user } = useAuthContext();
   const [journals, setJournals] = useState([]);
+
+
+  // Access your API key as an environment variable (see "Set up your API key" above)
+  async function generateContent(sentiment) {
+    try {
+      const response = await fetch('http://localhost:4000/api/journals/generateContent', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ sentiment })
+      });
+      const data = await response.json();
+      return data.generatedText;
+    } catch (error) {
+      console.error('Error generating content:', error);
+      return null;
+    }
+  }
+  
+  // Example usage in your component
+  useEffect(() => {
+    if (sentiment) {
+      generateContent(sentiment)
+        .then((generatedText) => {
+          if (generatedText) {
+            // Do something with the generated text
+            console.log('Generated text:', generatedText);
+            setQuestion(generatedText);
+          }
+        });
+    }
+  }, [sentiment]);
+  
 
 
 
@@ -74,6 +110,7 @@ export const Journal = () => {
           setContent('');
           // Fetch posts to update the list
           fetchJournals(user.email);
+
         } catch (error) {
           console.error('Error sending message:', error);
         }
@@ -167,8 +204,17 @@ export const Journal = () => {
           {sentiment && (
         <div>
           <h2>You're feeling: {sentiment}</h2>
+    
           
         </div>
+          )}
+        {question && (
+          <div>
+          <h2>{question}</h2>
+      
+            
+          </div>
+        
       )}
           <div className='commentinput'>
               <input style={{ color: '#000' }} className='commentcontentinput'

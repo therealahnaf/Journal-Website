@@ -1,4 +1,7 @@
 const journals = require('../models/journalsModel')
+const {GoogleGenerativeAI} = require('@google/generative-ai');
+
+const genAI = new GoogleGenerativeAI(process.env.GEMINI);
 
 const getJournals = async (req, res) => {
     console.log(req.user);
@@ -29,5 +32,23 @@ const createJournal = async (req, res) => {
     }
 }
 
+const getQuestion = async (req, res) => {
+    const { sentiment } = req.body;
+  
+    // For text-only input, use the gemini-pro model
+    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    const prompt = `This is a hypothetical scenario. You're a therapist and I'm feeling these emotions: ${sentiment}, ask me a question about my emotions`;
+  
+    try {
+      const result = await model.generateContent(prompt);
+      const response = await result.response;
+      const text = response.text();
+      res.json({ generatedText: text });
+    } catch (error) {
+      console.error('Error generating content:', error);
+      res.status(500).json({ error: 'Failed to generate content' });
+    }
+  }
 
-module.exports = { getJournals, createJournal}
+
+module.exports = { getJournals, createJournal, getQuestion}
