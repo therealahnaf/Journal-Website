@@ -37,7 +37,7 @@ const getQuestion = async (req, res) => {
   
     // For text-only input, use the gemini-pro model
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-    const prompt = `This is a hypothetical scenario. You're a therapist and I'm feeling these emotions: ${sentiment}, ask me a question about my emotions`;
+    const prompt = `I'm feeling these emotions: ${sentiment}, ask me a question about my emotions`;
   
     try {
       const result = await model.generateContent(prompt);

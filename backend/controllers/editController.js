@@ -1,7 +1,8 @@
 const posts = require('../models/editModel');
 
 const getEdit = async (req, res) => {
-    const { email } = req.body;
+    const { email } = req.query;
+    console.log(email)
   
     try {
         if (!email) {
@@ -11,7 +12,7 @@ const getEdit = async (req, res) => {
         const data = await posts.findOne({ email });
 
         if (!data) {
-            return res.status(404).json({ error: "Data not found" });
+            return res.status(200).json(data);
         }
 
         res.status(200).json(data);
