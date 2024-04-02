@@ -220,7 +220,7 @@ export const Journal = () => {
       <div className="prevjournals">
         <h1>Previous Journal Entries</h1>
         <div className='prevjournalcontainer'>
-          <ul className='eachblog'>
+          <ul className='eachblogjournal'>
             {journals.map((journal) => (
               <li key={journal._id} style={{ color: '#fff' }}>
                 <p>{journal.journalcontent}</p>
