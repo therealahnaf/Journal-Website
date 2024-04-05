@@ -77,10 +77,10 @@
     margin: auto;
     padding: 20px;
 }
-.eachblog {
+.eachblogjournal {
     list-style-type: none;
 }
-.eachblog li{
+.eachblogjournal li{
     margin:auto;
     width: 1920px;
     max-width: 1300px;
@@ -93,7 +93,7 @@
     margin-bottom: 20px;
     height: fit-content;
 }
-.eachblog li img{
+.eachblogjournal li img{
     max-width: 50px;
     max-height: 50px;
     margin-left: 20px;
