@@ -63,7 +63,7 @@ export const Editprofile = () => {
                     type="number"
                     placeholder="Age"
                     name="age"
-                    value={data.age}
+                    value={data && data.age ? data.age : ''}
                     onChange={handleChange}
                 />
                 <input
@@ -72,7 +72,7 @@ export const Editprofile = () => {
                     type="text"
                     placeholder="Gender"
                     name="gender"
-                    value={data.gender}
+                    value={data && data.gender ? data.gender : ''}
                     onChange={handleChange}
                 />
                 <input
@@ -81,7 +81,7 @@ export const Editprofile = () => {
                     type="text"
                     placeholder="Country of Origin"
                     name="country"
-                    value={data.country}
+                    value={data && data.country ? data.country : ''}
                     onChange={handleChange}
                 />
                 <input
@@ -90,7 +90,7 @@ export const Editprofile = () => {
                     type="text"
                     placeholder="Religion"
                     name="religion"
-                    value={data.religion}
+                    value={data && data.religion ? data.religion : ''}
                     onChange={handleChange}
                 />
                 <button type="button" className='editprofilebutton' onClick={sendEdit}>
