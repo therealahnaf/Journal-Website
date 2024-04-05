@@ -18,6 +18,19 @@ export const Profile = () => {
 		}
 	};
 
+  // const fetchJournalData = async () => {
+	// 	try {
+  //     const email = user.email
+	// 		const response = await fetch(`http://localhost:4000/api/edit?email=${email}`, {
+	// 		});
+	// 		const fetched = await response.json();
+	// 		setData(fetched);
+  //     console.log(data)
+	// 	} catch (error) {
+	// 		console.error('Error fetching data:', error);
+	// 	}
+	// };
+
   useEffect(() => {
 		// Fetch data on component mount
 	

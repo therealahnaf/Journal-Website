@@ -2,7 +2,8 @@ const express = require('express')
 const {
   getJournals, 
   createJournal,
-  getQuestion
+  getQuestion,
+  getSentiment
 } = require('../controllers/journalsController')
 
 const requireAuth = require('../middleware/requireAuth')
@@ -17,6 +18,8 @@ router.get('/', getJournals)
 
 
 router.post('/generateContent', getQuestion);
+
+router.post('/getSentiment', getSentiment);
 
 
 // POST new post

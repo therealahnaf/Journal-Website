@@ -11,6 +11,7 @@ export const Journal = () => {
   const [recentJournals, setrecentJournals] = useState('')
   const { user } = useAuthContext();
   const [journals, setJournals] = useState([]);
+  const [haveJournals, setHaveJournals] = useState(false)
 
 
   // Access your API key as an environment variable (see "Set up your API key" above)
@@ -42,6 +43,8 @@ export const Journal = () => {
             setQuestion(generatedText);
           }
         });
+    } else if (!haveJournals) {
+      setQuestion("Start writing about your day!")
     }
   }, [sentiment]);
 
@@ -70,18 +73,14 @@ export const Journal = () => {
   useEffect(() => {
     if (journals.length > 0) {
       const journalcontentArray = journals.map(row => row.journalcontent);
-
-      if (journals.length > 4) {
         // If there are more than 2 journals, slice the array and join the elements
-        const updatedRecentJournals = journalcontent.concat(' ').concat(journalcontentArray.slice(0, 5).join(' '));
+        const updatedRecentJournals = journalcontentArray[0];
         setrecentJournals(updatedRecentJournals);
         console.log(updatedRecentJournals); // Log the updated value
-      } else {
-        // If there are 2 or fewer journals, join all elements
-        const updatedRecentJournals = journalcontent.concat(' ').concat(journalcontentArray.join(' '));
-        setrecentJournals(updatedRecentJournals);
-        console.log(updatedRecentJournals); // Log the updated value
-      }
+        setHaveJournals(true)
+
+    } else{
+      setHaveJournals(false)
     }
   }, [journals]);
 
@@ -89,58 +88,65 @@ export const Journal = () => {
     if (recentJournals !== '') {
       const fetchData = async () => {
         try {
-          const response = await query({ "inputs": recentJournals });
-          // Parse the JSON response
-          const data = response;
-          console.log(data);
-
-          // Find the label with the highest score
-          let maxScoreLabel = '';
-          let maxScore = -1;
-          for (const entry of data[0]) {
-            if (entry.score > maxScore) {
-              maxScore = entry.score;
-              maxScoreLabel = entry.label;
-            }
+          setQuestion("Generating prompt...");
+          let data;
+  
+          // Assuming you have recentJournals defined
+          const response = await fetch('http://localhost:4000/api/journals/getSentiment', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ "inputs": recentJournals })
+          });
+          
+          console.log(recentJournals);
+          
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
           }
-
-          // Display the label with the highest score
-          setSentiment(maxScoreLabel);
-          console.log("Label with highest score:", maxScoreLabel);
-
+          
+          console.log(response);
+          data = await response.json();
+          // Process the response data as needed
+          console.log(data);
+  
+          // Find the label with the highest score
+          setMaxLabel(data)
+  
           setContent('');
           // Fetch posts to update the list
           fetchJournals(user.email);
-
+  
         } catch (error) {
           console.error('Error sending message:', error);
         }
       };
-
+  
       fetchData();
     }
   }, [recentJournals]);
 
-
-  async function query(data) {
-    const response = await fetch(
-      "https://api-inference.huggingface.co/models/finiteautomata/bertweet-base-emotion-analysis",
-      {
-        headers: { Authorization: "Bearer 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" },
-        method: "POST",
-        body: JSON.stringify(data),
+  const setMaxLabel = async (data) =>{
+    let maxScoreLabel = '';
+      let maxScore = -1;
+      for (const entry of data[0]) {
+        if (entry.score > maxScore) {
+          maxScore = entry.score;
+          maxScoreLabel = entry.label;
+        }
       }
-    );
-    const result = await response.json();
-    return result;
+  
+      // Display the label with the highest score
+      setSentiment(maxScoreLabel);
+      console.log("Label with highest score:", maxScoreLabel);
   }
+  
+  
 
   const addJournalcontent = async () => {
-
     try {
-
-
-      const email = user.email
+      const email = user.email;
       await fetch('http://localhost:4000/api/journals', {
         method: 'POST',
         headers: {
@@ -149,54 +155,63 @@ export const Journal = () => {
         },
         body: JSON.stringify({ journalcontent, email }),
       });
+      
       const journalcontentArray = journals.map(row => row.journalcontent);
       console.log(journalcontentArray);
-
-      if (journals.length > 4) {
+  
+      let data; // Define data variable here
+  
+      if (journals.length > 0) {
         // If there are more than 2 journals, slice the array and join the elements
-        const updatedRecentJournals = journalcontent.concat(' ').concat(journalcontentArray.slice(0, 5).join(' '));
+        const updatedRecentJournals = journalcontentArray[0];
         setrecentJournals(updatedRecentJournals);
         console.log(updatedRecentJournals); // Log the updated value
       } else {
         // If there are 2 or fewer journals, join all elements
-        const updatedRecentJournals = journalcontent.concat(' ').concat(journalcontentArray.join(' '));
+        const updatedRecentJournals = journalcontent;
         setrecentJournals(updatedRecentJournals);
         console.log(updatedRecentJournals); // Log the updated value
       }
-
-
-      const response = await query({ "inputs": recentJournals });
-
-      // Parse the JSON response
-      const data = response;
-      console.log(data)
-
-
-      // Find the label with the highest score
-      let maxScoreLabel = '';
-      let maxScore = -1;
-      for (const entry of data[0]) {
-        if (entry.score > maxScore) {
-          maxScore = entry.score;
-          maxScoreLabel = entry.label;
+  
+      try {
+        // Assuming you have recentJournals defined
+        const response = await fetch('http://localhost:4000/api/journals/getSentiment', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ "inputs": recentJournals })
+        });
+        
+        console.log(recentJournals);
+        
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
         }
-
+        
+        console.log(response);
+        data = await response.json();
+        // Process the response data as needed
+        console.log(data);
+      } catch (error) {
+        console.error('Error fetching data from backend:', error);
       }
-
-
-      // Display the label with the highest score
-      setSentiment(maxScoreLabel)
-      console.log("Label with highest score:", maxScoreLabel);
-
+  
+      // Parse the JSON response
+      console.log(data);
+  
+      // Find the label with the highest score
+      setMaxLabel(data)
+  
       setContent('');
-
-
+  
       // Fetch posts to update the list
       // fetchComments();
     } catch (error) {
       console.error('Error sending message:', error);
     }
   }
+  
 
   return (
     <div className='journalfullpage'>
@@ -214,6 +229,7 @@ export const Journal = () => {
           <button className='jounralsendbutton' onClick={addJournalcontent}>Send</button>
         </div>
         <div className="journalright">
+          <h3>You've been feeling [sentiment] lately. Use this prompt to start writing your next journal!</h3>
           <h1>{question}</h1>
         </div>
       </div>
