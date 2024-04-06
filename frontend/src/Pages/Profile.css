@@ -1,0 +1,38 @@
+.profiletoedit{
+    margin: auto;
+    width: 1000px;
+    background-color: aqua;
+    backdrop-filter: blur(20px);
+    background: transparent;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 30px;
+    color: white;
+    display: flex; /* Add flex display to align items vertically */
+    flex-direction: column;
+    align-items: center; /* Center items vertically */
+}
+.profileinfoblock {
+    margin: auto;
+    width: 1000px;
+    background-color: aqua;
+    backdrop-filter: blur(20px);
+    background: transparent;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 30px;
+    color: white;
+    display: flex; /* Add flex display to align items vertically */
+    flex-direction: column;
+    align-items: left; /* Center items vertically */
+}
+
+.profileinfoblock img {
+    max-width: 50px;
+    padding-top: 46.5px;
+    padding-right: 20px;
+    padding-left: 10px;
+}
+
+.profileinfoblock p {
+    font-size: 30px;
+    margin: 10px; /* Remove default margin to align properly */
+}
