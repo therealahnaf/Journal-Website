@@ -25,30 +25,20 @@ export const Journal = () => {
         body: JSON.stringify({ sentiment })
       });
       const data = await response.json();
-      return data.generatedText;
+      const generatedText = data.generatedText;
+      if (generatedText) {
+        // Do something with the generated text
+        //console.log('Generated text:', generatedText);
+        setQuestion(generatedText);
+      } else {
+        // Handle the case where generatedText is falsy
+        console.error('Generated text is empty.');
+      }
     } catch (error) {
       console.error('Error generating content:', error);
       return null;
     }
   }
-
-  // Example usage in your component
-  useEffect(() => {
-    if (sentiment) {
-      generateContent(sentiment)
-        .then((generatedText) => {
-          if (generatedText) {
-            // Do something with the generated text
-            console.log('Generated text:', generatedText);
-            setQuestion(generatedText);
-          }
-        });
-    } else if (!haveJournals) {
-      setQuestion("Start writing about your day!")
-    }
-  }, [sentiment]);
-
-
 
 
   const fetchJournals = async (email) => {
@@ -70,77 +60,92 @@ export const Journal = () => {
     }
   }, [user]);
 
-  useEffect(() => {
+useEffect(() => {
+  
+  const fetchData = async () => {
     if (journals.length > 0) {
+      let data;
       const journalcontentArray = journals.map(row => row.journalcontent);
-        // If there are more than 2 journals, slice the array and join the elements
-        const updatedRecentJournals = journalcontentArray[0];
-        setrecentJournals(updatedRecentJournals);
-        console.log(updatedRecentJournals); // Log the updated value
-        setHaveJournals(true)
-
-    } else{
-      setHaveJournals(false)
-    }
-  }, [journals]);
-
-  useEffect(() => {
-    if (recentJournals !== '') {
-      const fetchData = async () => {
-        try {
-          setQuestion("Generating prompt...");
-          let data;
-  
-          // Assuming you have recentJournals defined
-          const response = await fetch('http://localhost:4000/api/journals/getSentiment', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ "inputs": recentJournals })
-          });
-          
-          console.log(recentJournals);
-          
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          
-          console.log(response);
-          data = await response.json();
-          // Process the response data as needed
-          console.log(data);
-  
-          // Find the label with the highest score
-          setMaxLabel(data)
-  
-          setContent('');
-          // Fetch posts to update the list
-          fetchJournals(user.email);
-  
-        } catch (error) {
-          console.error('Error sending message:', error);
+      // If there are more than 2 journals, slice the array and join the elements
+      const updatedRecentJournals = journalcontentArray[0];
+      setrecentJournals(updatedRecentJournals);
+      //console.log(updatedRecentJournals); // Log the updated value
+      setHaveJournals(true);
+      console.log(recentJournals);
+      
+      try {
+        const response = await fetch('http://localhost:4000/api/journals/getSentiment', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ "inputs": recentJournals })
+        });
+        
+        
+        
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
         }
-      };
-  
-      fetchData();
-    }
-  }, [recentJournals]);
+        
+        //console.log(response);
+        data = await response.json();
+        // Process the response data as needed
+        //console.log(data[0][0].label);
 
-  const setMaxLabel = async (data) =>{
-    let maxScoreLabel = '';
-      let maxScore = -1;
-      for (const entry of data[0]) {
-        if (entry.score > maxScore) {
-          maxScore = entry.score;
-          maxScoreLabel = entry.label;
-        }
+        // Find the label with the highest score
+        setSentiment(data[0][0].label);
+      } catch (error) {
+        console.error('Error fetching sentiment:', error);
       }
-  
-      // Display the label with the highest score
-      setSentiment(maxScoreLabel);
-      console.log("Label with highest score:", maxScoreLabel);
-  }
+    } else {
+      setHaveJournals(false);
+    }
+  };
+
+  fetchData();
+}, [journals]);
+
+
+
+  const fetchDataFromApi = async () => {
+    try {
+      setQuestion("Generating prompt...");
+      let data;
+
+      // Assuming you have recentJournals defined
+      const response = await fetch('http://localhost:4000/api/journals/getSentiment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ "inputs": recentJournals })
+      });
+      
+      //console.log(recentJournals);
+      
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      
+      console.log(response);
+      data = await response.json();
+      // Process the response data as needed
+      //console.log(data[0][0].label);
+
+      // Find the label with the highest score
+
+      setSentiment(data[0][0].label)
+      
+      generateContent(data[0][0].label)
+
+      // Fetch posts to update the list
+      fetchJournals(user.email);
+
+    } catch (error) {
+      console.error('Error sending message:', error);
+    }
+  };
   
   
 
@@ -155,9 +160,11 @@ export const Journal = () => {
         },
         body: JSON.stringify({ journalcontent, email }),
       });
+
+      fetchJournals(user.email);
       
       const journalcontentArray = journals.map(row => row.journalcontent);
-      console.log(journalcontentArray);
+      //console.log(journalcontentArray);
   
       let data; // Define data variable here
   
@@ -165,43 +172,20 @@ export const Journal = () => {
         // If there are more than 2 journals, slice the array and join the elements
         const updatedRecentJournals = journalcontentArray[0];
         setrecentJournals(updatedRecentJournals);
-        console.log(updatedRecentJournals); // Log the updated value
+        //console.log(updatedRecentJournals); // Log the updated value
       } else {
         // If there are 2 or fewer journals, join all elements
         const updatedRecentJournals = journalcontent;
         setrecentJournals(updatedRecentJournals);
-        console.log(updatedRecentJournals); // Log the updated value
+        //console.log(updatedRecentJournals); // Log the updated value
       }
   
-      try {
-        // Assuming you have recentJournals defined
-        const response = await fetch('http://localhost:4000/api/journals/getSentiment', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ "inputs": recentJournals })
-        });
-        
-        console.log(recentJournals);
-        
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        
-        console.log(response);
-        data = await response.json();
-        // Process the response data as needed
-        console.log(data);
-      } catch (error) {
-        console.error('Error fetching data from backend:', error);
-      }
+      
   
       // Parse the JSON response
-      console.log(data);
+      //console.log(data);
   
       // Find the label with the highest score
-      setMaxLabel(data)
   
       setContent('');
   
@@ -229,8 +213,9 @@ export const Journal = () => {
           <button className='jounralsendbutton' onClick={addJournalcontent}>Send</button>
         </div>
         <div className="journalright">
-          <h3>You've been feeling [sentiment] lately. Use this prompt to start writing your next journal!</h3>
-          <h1>{question}</h1>
+        {sentiment && <h3>You've been feeling {sentiment} lately. Use this prompt to start writing your next journal!</h3>}
+          <button className='jounralsendbutton' onClick={fetchDataFromApi}>Generate</button>
+          {question && <h1>{question}</h1>}
         </div>
       </div>
       <div className="prevjournals">
