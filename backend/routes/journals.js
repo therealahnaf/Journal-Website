@@ -4,7 +4,7 @@ const {
   createJournal,
   getQuestion,
   getSentiment
-} = require('../controllers/journalsController')
+} = require('../../controllers/journalsController')
 
 const requireAuth = require('../middleware/requireAuth')
 

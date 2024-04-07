@@ -3,12 +3,12 @@ const {
   getPosts, 
   createPost,
   getPost
-} = require('../controllers/postsController')
+} = require('../../controllers/postsController')
 
 const {
   getComments, 
   newComment
-} = require('../controllers/commentsController')
+} = require('../../controllers/commentsController')
 
 const router = express.Router()
 

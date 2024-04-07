@@ -3,7 +3,7 @@ const express = require('express')
 const {
     getEdit, 
     postEdit
-  } = require('../controllers/editController')
+  } = require('../../controllers/editController')
 
 const router = express.Router()
 
