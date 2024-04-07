@@ -108,44 +108,35 @@ useEffect(() => {
 
 
 
-  const fetchDataFromApi = async () => {
-    try {
-      setQuestion("Generating prompt...");
-      let data;
+const fetchDataFromApi = async () => {
+  try {
+    setQuestion("Generating prompt...");
 
-      // Assuming you have recentJournals defined
-      const response = await fetch('http://localhost:4000/api/journals/getSentiment', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ "inputs": recentJournals })
-      });
-      
-      //console.log(recentJournals);
-      
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      
-      console.log(response);
-      data = await response.json();
-      // Process the response data as needed
-      //console.log(data[0][0].label);
+    // Fetch recent journals before calling fetchJournals
+    const recentJournalsArray = journals.map(row => row.journalcontent);
 
-      // Find the label with the highest score
+    const response = await fetch('http://localhost:4000/api/journals/getSentiment', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ "inputs": recentJournalsArray[0] })
+    });
 
-      setSentiment(data[0][0].label)
-      
-      generateContent(data[0][0].label)
-
-      // Fetch posts to update the list
-      fetchJournals(user.email);
-
-    } catch (error) {
-      console.error('Error sending message:', error);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
     }
-  };
+    const data = await response.json();
+    console.log(data[0][0])
+    setSentiment(data[0][0].label);
+
+    generateContent(data[0][0].label);
+
+    fetchJournals(user.email);
+  } catch (error) {
+    console.error('Error sending message:', error);
+  }
+};
   
   
 
@@ -214,8 +205,8 @@ useEffect(() => {
         </div>
         <div className="journalright">
         {sentiment && <h3>You've been feeling {sentiment} lately. Use this prompt to start writing your next journal!</h3>}
-          <button className='jounralsendbutton' onClick={fetchDataFromApi}>Generate</button>
           {question && <h1>{question}</h1>}
+          <button className='jounralsendbutton' onClick={fetchDataFromApi}>Generate</button>
         </div>
       </div>
       <div className="prevjournals">
@@ -225,7 +216,7 @@ useEffect(() => {
             {journals.map((journal) => (
               <li key={journal._id} style={{ color: '#fff' }}>
                 <p>{journal.journalcontent}</p>
-                <p className='date'>-{new Date(journal.createdAt).toLocaleString()}</p>
+                <p className='date'>Date: {new Date(journal.createdAt).toLocaleString()}</p>
               </li>
             ))}
           </ul>

@@ -17,10 +17,12 @@ To do
 
 Credits
 Login and Signup Authentication - FrontEnd (Afra Anani) and BackEnd (Ahnaf Hassan)
-Navbar and Footer - FrontEnd and BackEnd (Mubtasim Fuad Mahde)
+Navbar and Footer - FrontEnd (Mubtasim Fuad Mahde)
 Home Page - FrontEnd (Mubtasim Fuad Mahde)
 About Page - FrontEnd (Afra Anani)
-Profile Page - 
+Profile Page - FrontEnd (Afra Anani) and BackEnd (Ahnaf Hassan)
+EditProfile Page - BackEnd and FrontEnd (Mubtasim Fuad Mahde)
 Community Page - FrontEnd (Mubtasim Fuad Mahde) and BackEnd (Ahnaf Hassan)
-Journal Page - 
+Details Page - FrontEnd (Mubtasim Fuad Mahde) and BackEnd (Ahnaf Hassan)
+Journal Page - FrontEnd (Mubtasim Fuad Mahde) and BackEnd(Ahnaf Hassan)
 Chat Page - FrontEnd and BackEnd (Mubtasim Fuad Mahde and Ahnaf Hassan)

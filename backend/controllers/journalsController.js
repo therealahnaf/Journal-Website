@@ -52,19 +52,19 @@ const getQuestion = async (req, res) => {
 
   const getSentiment = async (req, res) => {
     try {
-        // const data = req.body; // Assuming the request contains the data to be sent to the Hugging Face model
-        // const response = await fetch(
-        //   "https://api-inference.huggingface.co/models/arpanghoshal/EmoRoBERTa",
-        //   {
-        //     headers: { Authorization: process.env.HF },
-        //     method: "POST",
-        //     body: JSON.stringify(data),
-        //   }
-        // );
-        // const result = await response.json();
-        const twoDArray = Array.from({ length: 2 }, () => Array(2).fill('happy'));
+        const data = req.body; // Assuming the request contains the data to be sent to the Hugging Face model
+        console.log(data)
+        const response = await fetch(
+          "https://api-inference.huggingface.co/models/arpanghoshal/EmoRoBERTa",
+          {
+            headers: { Authorization: process.env.HF },
+            method: "POST",
+            body: JSON.stringify(data),
+          }
+        );
+        const result = await response.json();
         
-        res.json(twoDArray);
+        res.json(result);
       } catch (error) {
         console.error("Error querying Hugging Face model:", error);
         res.status(500).json({ error: "Internal server error" });
