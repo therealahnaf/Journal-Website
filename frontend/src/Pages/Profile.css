@@ -18,12 +18,16 @@
     backdrop-filter: blur(20px);
     background: transparent;
     border: 2px solid rgb(255, 255, 255);
-    border-radius: 30px;
+    border-top-left-radius: 0; /* No border radius for top-left corner */
+    border-top-right-radius: 0; /* No border radius for top-right corner */
+    border-bottom-left-radius: 30px; /* Border radius for bottom-left corner */
+    border-bottom-right-radius: 30px; /* Border radius for bottom-right corner */
     color: white;
-    display: flex; /* Add flex display to align items vertically */
+    display: flex;
     flex-direction: column;
-    align-items: left; /* Center items vertically */
+    align-items: left;
 }
+
 
 .profileinfoblock img {
     max-width: 50px;

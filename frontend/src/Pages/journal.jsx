@@ -12,6 +12,7 @@ export const Journal = () => {
   const { user } = useAuthContext();
   const [journals, setJournals] = useState([]);
   const [haveJournals, setHaveJournals] = useState(false)
+  const [generated, setGenerated] = useState(false)
 
 
   // Access your API key as an environment variable (see "Set up your API key" above)
@@ -60,56 +61,70 @@ export const Journal = () => {
     }
   }, [user]);
 
-useEffect(() => {
+// useEffect(() => {
   
-  const fetchData = async () => {
-    if (journals.length > 0) {
-      let data;
-      const journalcontentArray = journals.map(row => row.journalcontent);
-      // If there are more than 2 journals, slice the array and join the elements
-      const updatedRecentJournals = journalcontentArray[0];
-      setrecentJournals(updatedRecentJournals);
-      //console.log(updatedRecentJournals); // Log the updated value
-      setHaveJournals(true);
-      console.log(recentJournals);
+//   const fetchData = async () => {
+//     if (journals.length > 0) {
+//       let data;
+//       const journalcontentArray = journals.map(row => row.journalcontent);
+//       // If there are more than 2 journals, slice the array and join the elements
+//       const updatedRecentJournals = journalcontentArray[0];
+//       setrecentJournals(updatedRecentJournals);
+//       //console.log(updatedRecentJournals); // Log the updated value
+//       setHaveJournals(true);
+//       console.log(recentJournals);
       
-      try {
-        const response = await fetch('http://localhost:4000/api/journals/getSentiment', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ "inputs": recentJournals })
-        });
+//       try {
+//         const response = await fetch('http://localhost:4000/api/journals/getSentiment', {
+//           method: 'POST',
+//           headers: {
+//             'Content-Type': 'application/json'
+//           },
+//           body: JSON.stringify({ "inputs": recentJournals })
+//         });
         
         
         
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
+//         if (!response.ok) {
+//           throw new Error('Network response was not ok');
+//         }
         
-        //console.log(response);
-        data = await response.json();
-        // Process the response data as needed
-        //console.log(data[0][0].label);
+//         //console.log(response);
+//         data = await response.json();
+//         // Process the response data as needed
+//         //console.log(data[0][0].label);
 
-        // Find the label with the highest score
-        setSentiment(data[0][0].label);
-      } catch (error) {
-        console.error('Error fetching sentiment:', error);
-      }
-    } else {
-      setHaveJournals(false);
-    }
-  };
+//         // Find the label with the highest score
+//         setSentiment(data[0][0].label);
+//       } catch (error) {
+//         console.error('Error fetching sentiment:', error);
+//       }
+//     } else {
+//       setHaveJournals(false);
+//     }
+//   };
 
-  fetchData();
-}, [journals]);
+//   fetchData();
+// }, [journals]);
 
 
 
 const fetchDataFromApi = async () => {
   try {
+    const journalcontentArray = journals.map(row => row.journalcontent);
+
+    if (journals.length > 0) {
+      // If there are more than 2 journals, slice the array and join the elements
+      const updatedRecentJournals = journalcontentArray[0];
+      setrecentJournals(updatedRecentJournals);
+      //console.log(updatedRecentJournals); // Log the updated value
+    } else {
+      // If there are 2 or fewer journals, join all elements
+      const updatedRecentJournals = journalcontent;
+      setrecentJournals(updatedRecentJournals);
+      //console.log(updatedRecentJournals); // Log the updated value
+    }
+
     setQuestion("Generating prompt...");
 
     // Fetch recent journals before calling fetchJournals
@@ -131,6 +146,7 @@ const fetchDataFromApi = async () => {
     setSentiment(data[0][0].label);
 
     generateContent(data[0][0].label);
+    setGenerated(true)
 
     fetchJournals(user.email);
   } catch (error) {
@@ -154,22 +170,12 @@ const fetchDataFromApi = async () => {
 
       fetchJournals(user.email);
       
-      const journalcontentArray = journals.map(row => row.journalcontent);
+      
       //console.log(journalcontentArray);
   
       let data; // Define data variable here
   
-      if (journals.length > 0) {
-        // If there are more than 2 journals, slice the array and join the elements
-        const updatedRecentJournals = journalcontentArray[0];
-        setrecentJournals(updatedRecentJournals);
-        //console.log(updatedRecentJournals); // Log the updated value
-      } else {
-        // If there are 2 or fewer journals, join all elements
-        const updatedRecentJournals = journalcontent;
-        setrecentJournals(updatedRecentJournals);
-        //console.log(updatedRecentJournals); // Log the updated value
-      }
+      
   
       
   
@@ -206,7 +212,9 @@ const fetchDataFromApi = async () => {
         <div className="journalright">
         {sentiment && <h3>You've been feeling {sentiment} lately. Use this prompt to start writing your next journal!</h3>}
           {question && <h1>{question}</h1>}
-          <button className='jounralsendbutton' onClick={fetchDataFromApi}>Generate</button>
+          <button className='jounralsendbutton' onClick={fetchDataFromApi}>
+            {generated ? 'Regenerate' : 'Generate'}
+          </button>
         </div>
       </div>
       <div className="prevjournals">

@@ -46,6 +46,7 @@
     width: 70%;
     height: 50vh;
     align-content: center;
+    text-align: center;
     display: flex;
     flex-direction: column;
     margin-right: 18px;
