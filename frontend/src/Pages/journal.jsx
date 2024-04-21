@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import { useAuthContext } from '../Hooks/useAuthContext';
 import './Journal.css'
 //const { GoogleGenerativeAI } = require("@google/generative-ai");
-
 export const Journal = () => {
   const [journalcontent, setContent] = useState('');
   const [sentiment, setSentiment] = useState('')

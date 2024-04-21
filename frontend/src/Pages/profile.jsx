@@ -7,7 +7,18 @@ import religionlogo from '../Components/Assets/profilereligion.png'
 import emaillogo from '../Components/Assets/profileemail.png'
 import genderlogo from '../Components/Assets/profilegender.png'
 import './Profile.css'
-
+export const fetchDatatest = async () => {
+  try {
+    const email = 'mubtasim@gmail.com'
+    const response = await fetch(`http://localhost:4000/api/edit?email=${email}`, {
+    });
+    const fetched = await response.json();
+    return true
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return error
+  }
+};
 export const Profile = () => {
   const [data, setData] = useState([]);
   const { user } = useAuthContext();
@@ -25,18 +36,6 @@ export const Profile = () => {
     }
   };
 
-  // const fetchJournalData = async () => {
-  // 	try {
-  //     const email = user.email
-  // 		const response = await fetch(`http://localhost:4000/api/edit?email=${email}`, {
-  // 		});
-  // 		const fetched = await response.json();
-  // 		setData(fetched);
-  //     console.log(data)
-  // 	} catch (error) {
-  // 		console.error('Error fetching data:', error);
-  // 	}
-  // };
 
   useEffect(() => {
     // Fetch data on component mount
