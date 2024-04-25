@@ -3,6 +3,31 @@ import { useAuthContext } from '../Hooks/useAuthContext';
 import React, { useState, useEffect } from 'react';
 import './Editprofile.css'
 import { Link } from 'react-router-dom';
+export const fetchDataTest = async (email) => {
+    try {
+        const response = await fetch(`http://localhost:4000/api/edit?email=${email}`);
+        const fetchedData = await response.json();
+        return fetchedData
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return error
+    }
+};
+export const sendEditTest = async (email, data) => {
+    try {
+        await fetch('http://localhost:4000/api/edit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, ...data }), // Send all data at once
+        });
+        return true
+    } catch (error) {
+        console.error('Error sending info', error);
+        return error
+    }
+};
 
 export const Editprofile = () => {
     const { user } = useAuthContext();

@@ -2,6 +2,32 @@
 import React, { useState, useEffect } from 'react';
 import { useAuthContext } from '../Hooks/useAuthContext';
 import './Chat.css'
+
+export const fetchMessagesTest = async () => {
+	try {
+		const response = await fetch('http://localhost:4000/api/messages/messages');
+		const data = await response.json();
+		return data
+	} catch (error) {
+		console.error('Error fetching messages:', error);
+		return error
+	}
+};
+export const sendMessageTest = async (email, message) => {
+	try {
+		await fetch('http://localhost:4000/api/messages/messages', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ email, message }),
+		});
+		return true
+	} catch (error) {
+		console.error('Error sending message:', error);
+		return error
+	}
+};
 const ChatRoom = () => {
 	const [messages, setMessages] = useState([]);
 	const { user } = useAuthContext();

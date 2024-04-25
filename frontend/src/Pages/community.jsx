@@ -4,6 +4,32 @@ import { useAuthContext } from '../Hooks/useAuthContext';
 import bloglogo from '../Components/Assets/communityblog.png'
 import { Link } from 'react-router-dom';
 import './Community.css'
+export const fetchPostsTest = async () => {
+	try {
+		const response = await fetch('http://localhost:4000/api/posts', {
+		});
+		const data = await response.json();
+		return data
+	} catch (error) {
+		console.error('Error fetching posts:', error);
+		return error
+	}
+};
+export const sendPostTest = async (email, postTitle, postContent) => {
+	try {
+		await fetch('http://localhost:4000/api/posts', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ postTitle, postContent, email }),
+		});
+		return true
+	} catch (error) {
+		console.error('Error sending message:', error);
+		return error
+	}
+};
 const Community = () => {
 	const [posts, setPosts] = useState([]);
 	const { user } = useAuthContext();
