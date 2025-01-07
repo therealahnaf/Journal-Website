@@ -5,9 +5,9 @@ import Login from './Pages/Login'
 import Signup from './Pages/Signup'
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { Footer } from './Components/Footer/Footer';
-import Community from './Pages/Community';
-import Jounral from './Pages/Journal';
-import Profile from './Pages/Profile';
+import Community from './Pages/community';
+import Jounral from './Pages/journal';
+import Profile from './Pages/profile';
 import About from './Pages/About';
 import Chat from './Pages/Chat';
 import Details from './Pages/Details';
